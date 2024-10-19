@@ -1,0 +1,38 @@
+syntax = "proto3";
+
+package health;
+
+// Messages representing patient data
+message PatientData {
+    int32 patient_id = 1;
+    repeated Medication medications = 2;
+}
+
+// Messages representing medication information
+message Medication {
+    int32 medication_id = 1;
+    string name = 2;
+    string dosage = 3;
+}
+
+// Request messages for the API. This should include the patient id.
+message HealthRecordRequest {
+    int32 patient_id = 1;
+}
+
+// Response message from the API. This should include the patient data as response.
+message HealthRecordResponse {
+    PatientData patient_data = 1;
+}
+
+// Request message for API which trying to update the health record.
+message UpdateHealthRecordRequest {
+    PatientData patient_data = 1;
+}
+
+// gRPC Service Definition
+service HealthRecordsService {
+    rpc AddHealthRecord (PatientData) returns (HealthRecordResponse);
+    rpc GetHealthRecord (HealthRecordRequest) returns (HealthRecordResponse);
+    rpc UpdateHealthRecord (UpdateHealthRecordRequest) returns (HealthRecordResponse);
+}

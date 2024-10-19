@@ -3,7 +3,8 @@
     {
       "name": "windows-gcc-x64",
       "includePath": [
-        "${workspaceFolder}/**"
+        "${workspaceFolder}/**",
+        "${workspaceFolder}/src"
       ],
       "compilerPath": "D:/EDU/MSYS2/mingw64/bin/gcc.exe",
       "cStandard": "${default}",
